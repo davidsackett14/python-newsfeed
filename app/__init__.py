@@ -1,5 +1,6 @@
 from flask import Flask
 
+
 def create_app(test_config=None):
     # set up app config
     app = Flask(__name__, static_url_path='/')
@@ -8,8 +9,12 @@ def create_app(test_config=None):
         SECRET_KEY='super_secret_key'
     )
 
+    @app.route('/')
+    def words():
+        return 'home page'
+
     @app.route('/hello')
     def hello():
-      return 'hello world'
+        return 'hello world'
 
     return app
